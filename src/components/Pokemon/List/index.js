@@ -5,7 +5,7 @@ import Card from '../Card';
 
 export default class List extends Component {
   state = {
-    url: 'https://pokeapi.co/api/v2/pokemon?limit=893&offset=0',
+    url: 'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0',
     pokemon: null,
   };
 
@@ -24,7 +24,7 @@ export default class List extends Component {
             ))}
           </div>
         ) : (
-          <h1>Loading Pokemon</h1>
+          <h1 className='mx-auto'>Loading Pokemon</h1>
         )}
       </div>
     );
