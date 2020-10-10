@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Img = styled.img`
   width: 6em;
@@ -15,4 +16,17 @@ export const Cards = styled.div`
   }
   --moz-user-select: none;
   --website-user-select: none;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  &:focus,
+  &:hover,
+  &:link,
+  &:visited,
+  &:active {
+    text-decoration: none;
+    color: black;
+  }
 `;
