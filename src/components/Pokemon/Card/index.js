@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { Img, Cards, StyledLink } from './style';
 import loading from '../../../assets/graphics/loading.gif';
 
@@ -64,7 +63,6 @@ export default class Card extends Component {
                       letter.charAt(0).toUpperCase() + letter.substring(1),
                   )
                   .join(' ')}
-                {/* the code above just capitalizes the first letter, theres probably a shorter way of doing this but idk */}
               </div>
             </div>
           </Cards>

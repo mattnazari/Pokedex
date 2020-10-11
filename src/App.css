@@ -13,3 +13,12 @@
 .card-header {
   padding: 12px 10px;
 }
+
+@font-face {
+  src: url('./assets/fonts/OpenSans-SemiBold.ttf');
+  font-family: OpenSansSemiBold;
+}
+
+body {
+  font-family: OpenSansSemiBold;
+}

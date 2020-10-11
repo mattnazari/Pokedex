@@ -1,6 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const badgeColors = {
+  normal: 'A8A878',
+  fire: 'F08030',
+  water: '6890F0',
+  electric: 'F8D030',
+  grass: '78C850',
+  ice: '98D8D8',
+  fighting: 'C03028',
+  poison: 'A040A0',
+  ground: 'E0C068',
+  flying: 'A890F0',
+  psychic: 'F85888',
+  bug: 'A8B820',
+  rock: 'B8A038',
+  ghost: '705898',
+  dragon: '7038F8',
+  dark: '705848',
+  steel: 'B8B8D0',
+  fairy: 'EE99AC',
+};
+
 export default class Pokemon extends Component {
   state = {
     name: 'null',
@@ -169,8 +190,268 @@ export default class Pokemon extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.state.name}</h1>
+      <div className='col'>
+        <div className='card'>
+          <div className='card-header'>
+            {/****************************************************************** HEADER */}
+            <div className='row'>
+              <div className='col-5'>
+                <h5>#{this.state.pokemonIndex}</h5>
+              </div>
+              <div className='col-7'>
+                <div className='float-right'>
+                  {this.state.types.map((type) => (
+                    <span
+                      key={type}
+                      className='badge badge-pill badge-primary mr-1 p-2'
+                      style={{
+                        backgroundColor: `#${badgeColors[type]}`,
+                        color: 'white',
+                      }}
+                    >
+                      {type
+                        .toLowerCase()
+                        .split('-')
+                        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                        .join(' ')}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {/****************************************************************** HEADER */}
+
+            {/****************************************************************** POKEMON IMAGE & NAME */}
+            <div className='col-md-3 mx-auto'>
+              <img
+                className='card-img-top rounded mx-auto mt-2'
+                src={this.state.pokemonImg}
+              />
+              <h4 style={{ textAlign: 'center' }}>
+                {this.state.name
+                  .toLowerCase()
+                  .split('-')
+                  .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                  .join(' ')}
+              </h4>
+            </div>
+            {/****************************************************************** POKEMON IMAGE & NAME */}
+
+            {/****************************************************************** POKEMON STATS AND DESCRIPTION */}
+            <div className='card-body'>
+              <div className='row align-items-center'>
+                <div className='col-md-9 mx-auto'>
+                  <div className='row align-items-center'>
+                    <div className='col-23 col-md-3'>HP</div>
+                    <div className='col-12 col-md-9'>
+                      <div className='progress'>
+                        <div
+                          className='progress-bar'
+                          role='progressBar'
+                          style={{ width: `${this.state.stats.hp}%` }}
+                          area-valuenow='25'
+                          area-valuemin='0'
+                          area-valuemax='100'
+                        >
+                          <small>{this.state.stats.hp}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='row align-items-center'>
+                    <div className='col-23 col-md-3'>Attack</div>
+                    <div className='col-12 col-md-9'>
+                      <div className='progress'>
+                        <div
+                          className='progress-bar'
+                          role='progressBar'
+                          style={{ width: `${this.state.stats.attack}%` }}
+                          area-valuenow='25'
+                          area-valuemin='0'
+                          area-valuemax='100'
+                        >
+                          <small>{this.state.stats.attack}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='row align-items-center'>
+                    <div className='col-23 col-md-3'>Defense</div>
+                    <div className='col-12 col-md-9'>
+                      <div className='progress'>
+                        <div
+                          className='progress-bar'
+                          role='progressBar'
+                          style={{ width: `${this.state.stats.defense}%` }}
+                          area-valuenow='25'
+                          area-valuemin='0'
+                          area-valuemax='100'
+                        >
+                          <small>{this.state.stats.defense}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='row align-items-center'>
+                    <div className='col-23 col-md-3'>Sp.Atk</div>
+                    <div className='col-12 col-md-9'>
+                      <div className='progress'>
+                        <div
+                          className='progress-bar'
+                          role='progressBar'
+                          style={{ width: `${this.state.stats.spAtk}%` }}
+                          area-valuenow='25'
+                          area-valuemin='0'
+                          area-valuemax='100'
+                        >
+                          <small>{this.state.stats.spAtk}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='row align-items-center'>
+                    <div className='col-23 col-md-3'>Sp.Def</div>
+                    <div className='col-12 col-md-9'>
+                      <div className='progress'>
+                        <div
+                          className='progress-bar'
+                          role='progressBar'
+                          style={{ width: `${this.state.stats.spDef}%` }}
+                          area-valuenow='25'
+                          area-valuemin='0'
+                          area-valuemax='100'
+                        >
+                          <small>{this.state.stats.spDef}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='row align-items-center'>
+                    <div className='col-23 col-md-3'>Speed</div>
+                    <div className='col-12 col-md-9'>
+                      <div className='progress'>
+                        <div
+                          className='progress-bar'
+                          role='progressBar'
+                          style={{ width: `${this.state.stats.speed}%` }}
+                          area-valuenow='25'
+                          area-valuemin='0'
+                          area-valuemax='100'
+                        >
+                          <small>{this.state.stats.speed}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='row mt-1 mx-auto'>
+                  <div className='col'>
+                    <p className='p-2'>{this.state.desc}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/****************************************************************** POKEMON STATS AND DESCRIPTION */}
+            <hr />
+
+            {/****************************************************************** POKEMON PROFILE */}
+            <div className='card-body'>
+              <h5 class='card-title text-center'>Profile</h5>
+
+              {/****************************************************************** POKEMON PROFILE LEFT SIDE*/}
+              <div className='row'>
+                <div className='col-md-6'>
+                  <div className='row'>
+                    <div className='col-6'>
+                      <h6 className='float-right'>Height:</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-left'>{this.state.height} ft.</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-right'>Weight:</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-left'>{this.state.weight} lbs</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-right'>Catch Rate:</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-left'>{this.state.catchRate}%</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-right'>Gender Ratio:</h6>
+                    </div>
+                    <div className='col-6'>
+                      <div class='progress'>
+                        <div
+                          class='progress-bar'
+                          role='progressbar'
+                          style={{
+                            width: `${this.state.genderRatioFemale}%`,
+                            backgroundColor: '#FF6BCE',
+                          }}
+                          aria-valuenow='15'
+                          aria-valuemin='0'
+                          aria-valuemax='100'
+                        >
+                          <small>{this.state.genderRatioFemale}%</small>
+                        </div>
+                        <div
+                          class='progress-bar'
+                          role='progressbar'
+                          style={{
+                            width: `${this.state.genderRatioMale}%`,
+                            backgroundColor: '#3F73DC',
+                          }}
+                          aria-valuenow='30'
+                          aria-valuemin='0'
+                          aria-valuemax='100'
+                        >
+                          <small>{this.state.genderRatioMale}%</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/****************************************************************** POKEMON PROFILE LEFT SIDE*/}
+
+                {/****************************************************************** POKEMON PROFILE RIGHT SIDE*/}
+                <div className='col-md-6'>
+                  <div className='row'>
+                    <div className='col-6'>
+                      <h6 className='float-right'>Abilities:</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-left'>{this.state.abilities}</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-right'>EVs:</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-left'>{this.state.evs}</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-right'>Egg Groups:</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-left'>{this.state.eggGroups} </h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-right'>Hatch Steps:</h6>
+                    </div>
+                    <div className='col-6'>
+                      <h6 className='float-left'>{this.state.hatchSteps}</h6>
+                    </div>
+                  </div>
+                </div>
+                {/****************************************************************** POKEMON PROFILE RIGHT SIDE*/}
+              </div>
+            </div>
+            {/****************************************************************** POKEMON PROFILE */}
+          </div>
+        </div>
       </div>
     );
   }

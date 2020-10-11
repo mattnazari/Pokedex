@@ -19,7 +19,7 @@ class App extends Component {
             className='container'
             style={{
               backgroundColor: 'white',
-              padding: '8em 3em 0 3em',
+              padding: '8em 3em 1.8em',
             }}
           >
             <Switch>
